@@ -1,0 +1,12 @@
+<svg preserveAspectRatio="none" overflow="visible" style="display: block;" width="103.2" height="60.3999" viewBox="0 0 103.2 60.3999" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g id="Clip path group">
+<mask id="mask0_0_103" style="mask-type:luminance" maskUnits="userSpaceOnUse" x="0" y="0" width="104" height="61">
+<g id="SVGID_00000132797332655890823170000012940989187201512618_">
+<path id="Vector" d="M103.2 0H0V60.3999H103.2V0Z" fill="white"/>
+</g>
+</mask>
+<g mask="url(#mask0_0_103)">
+<path id="Vector_2" d="M57.5 58.2998C57.5 59.1998 58 60 58.8 60C59.6 60 60.1 59.1998 60.1 58.2998C60.1 57.4998 59.7 56.6997 58.8 56.6997C57.9 56.5997 57.5 57.3998 57.5 58.2998ZM60.6 58.1997C60.6 59.5997 59.7 60.2998 58.7 60.2998C57.6 60.2998 56.9 59.4997 56.9 58.1997C56.9 56.8997 57.7 56.0996 58.8 56.0996C59.9 56.1996 60.6 56.9997 60.6 58.1997Z" fill="#446E04"/>
+</g>
+</g>
+</svg>
