@@ -20,10 +20,13 @@ function updateScale() {
 }
 
 function updateModalScale() {
+  const viewportScale = window.visualViewport?.scale ?? 1;
+  const fixedMobileViewport = window.screen.width < DESIGN_WIDTH && window.innerWidth >= DESIGN_WIDTH;
+  const maximumScale = viewportScale < 0.99 || fixedMobileViewport ? 2 : 1;
   const scale = Math.min(
     (window.innerWidth - 16) / MODAL_WIDTH,
     (window.innerHeight - 16) / MODAL_HEIGHT,
-    1,
+    maximumScale,
   );
   document.documentElement.style.setProperty('--modal-scale', String(scale));
 }

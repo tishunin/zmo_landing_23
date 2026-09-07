@@ -21,8 +21,8 @@
 html {
   min-width: 320px;
   background: #8fa600;
-  -webkit-text-size-adjust: 100%;
-  text-size-adjust: 100%;
+  -webkit-text-size-adjust: none;
+  text-size-adjust: none;
 }
 body { min-height: 100vh; margin: 0; overflow-x: hidden; background: #8fa600; }
 button, input { font: inherit; }
