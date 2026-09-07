@@ -230,7 +230,7 @@ button, input { font: inherit; }
   width: 351px;
   height: 70px;
   padding: 0;
-  color: var(--dark);
+  color: var(--cream);
   font-family: "Unbounded", sans-serif;
   font-size: 30px;
   font-weight: 700;
@@ -239,7 +239,7 @@ button, input { font: inherit; }
   border: 0;
   border-radius: 35px;
   cursor: pointer;
-  background: var(--green);
+  background: var(--dark);
   box-shadow: 0 7px 14px -2px rgb(68 110 4 / 52%);
 }
 .registration-trigger-top:hover { filter: brightness(1.035); }
