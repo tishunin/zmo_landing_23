@@ -1,5 +1,5 @@
 const DESIGN_WIDTH = 850;
-const DESIGN_HEIGHT = 6926;
+const DESIGN_HEIGHT = 7196;
 const MODAL_WIDTH = 482;
 const MODAL_HEIGHT = 674;
 
@@ -73,28 +73,47 @@ function initializeLanding() {
   });
 
   const socialLinks = {
-    '13:453': ['https://t.me/zemlya_m_o', 'Telegram', 'social-telegram-link'],
-    '13:443': ['https://vk.com/zemlya_m_o', 'ВКонтакте', 'social-vk-link'],
-    '13:450': ['http://www.youtube.com/@zemlya_m_o', 'YouTube', 'social-youtube-link'],
-    '13:444': ['https://rutube.ru/channel/42205794/', 'Rutube', 'social-rutube-link'],
-    '13:434': ['https://dzen.ru/zemlya_m_o', 'Дзен', 'social-dzen-link'],
+    '13:453': ['https://t.me/zemlya_m_o', 'Telegram', 'social-telegram-link', 'assets/figma/social-telegram.svg'],
+    '13:443': ['https://vk.com/zemlya_m_o', 'ВКонтакте', 'social-vk-link', 'assets/figma/social-vk.svg'],
+    '13:450': ['http://www.youtube.com/@zemlya_m_o', 'YouTube', 'social-youtube-link', 'assets/figma/social-youtube.svg'],
+    '13:444': ['https://rutube.ru/channel/42205794/', 'Rutube', 'social-rutube-link', 'assets/figma/social-rutube.svg'],
+    '13:434': ['https://dzen.ru/zemlya_m_o', 'Дзен', 'social-dzen-link', 'assets/figma/social-dzen.svg'],
   };
 
-  Object.entries(socialLinks).forEach(([nodeId, [url, name, id]]) => {
+  Object.entries(socialLinks).forEach(([nodeId, [url, name, id, imageUrl]]) => {
     const icon = root.querySelector(`[data-node-id="${nodeId}"]`);
     if (!icon) return;
 
     const link = document.createElement('a');
-    [...icon.attributes].forEach(({ name: attribute, value }) => link.setAttribute(attribute, value));
     link.id = id;
-    link.classList.add('social-link');
+    link.className = 'social-link';
+    link.dataset.nodeId = nodeId;
     link.href = url;
     link.target = '_blank';
     link.rel = 'noopener noreferrer';
     link.setAttribute('aria-label', `${name} — открыть страницу`);
-    link.append(...icon.childNodes);
+    const image = document.createElement('img');
+    image.className = 'social-icon-image';
+    image.src = imageUrl;
+    image.alt = '';
+    link.append(image);
     icon.replaceWith(link);
   });
+
+  const maxLink = document.createElement('a');
+  maxLink.id = 'social-max-link';
+  maxLink.className = 'social-link';
+  maxLink.dataset.nodeId = '15:69';
+  maxLink.href = 'https://max.ru/id504309653165_biz';
+  maxLink.target = '_blank';
+  maxLink.rel = 'noopener noreferrer';
+  maxLink.setAttribute('aria-label', 'MAX — открыть страницу');
+  const maxImage = document.createElement('img');
+  maxImage.className = 'social-icon-image';
+  maxImage.src = 'assets/figma/max.svg';
+  maxImage.alt = '';
+  maxLink.append(maxImage);
+  root.querySelector('.figma-canvas').append(maxLink);
 
   const recapLink = document.createElement('a');
   recapLink.id = 'last-year-video-link';

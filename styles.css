@@ -25,7 +25,7 @@ button, input { font: inherit; }
 .landing-shell {
   position: relative;
   width: min(100%, 850px);
-  height: calc(6926px * var(--landing-scale));
+  height: calc(7196px * var(--landing-scale));
   margin-inline: auto;
   overflow: hidden;
   background: var(--green);
@@ -36,7 +36,7 @@ button, input { font: inherit; }
   position: absolute;
   inset: 0 auto auto 0;
   width: 850px;
-  height: 6926px;
+  height: 7196px;
   transform: scale(var(--landing-scale));
   transform-origin: 0 0;
 }
@@ -45,7 +45,7 @@ button, input { font: inherit; }
   position: relative;
   width: 850px !important;
   height: 6926px !important;
-  overflow: hidden;
+  overflow: visible;
   background: var(--green);
 }
 
@@ -58,6 +58,9 @@ button, input { font: inherit; }
 .figma-canvas .village-link { text-decoration: none; cursor: pointer; }
 .figma-canvas .village-link:hover { text-decoration: underline; text-underline-offset: 3px; }
 .figma-canvas .social-link { cursor: pointer; }
+.figma-canvas .social-link,
+.figma-canvas .village-link { pointer-events: auto; }
+.figma-canvas .social-icon-image { display: block; width: 100%; height: 100%; }
 .figma-canvas .social-link img { transition: filter 160ms ease, transform 160ms ease; }
 .figma-canvas .social-link:hover img { filter: brightness(1.12); transform: scale(1.035); }
 .figma-canvas .social-link:focus-visible img { filter: drop-shadow(0 0 8px rgb(241 255 164 / 90%)); }
@@ -75,6 +78,124 @@ button, input { font: inherit; }
 .figma-canvas [data-node-id="13:520"] > div > div {
   background: var(--green) !important;
 }
+
+/* Updated Figma frame (7196px): changed content and footer geometry. */
+.figma-canvas [data-node-id="13:32"],
+.figma-canvas [data-node-id="13:510"],
+.figma-canvas [data-node-id="13:536"],
+.figma-canvas [data-node-id="13:8"],
+.figma-canvas [data-node-id="13:50"],
+.figma-canvas [data-node-id="13:53"],
+.figma-canvas [data-node-id="13:424"],
+.figma-canvas [data-node-id="13:430"],
+.figma-canvas [data-node-id="13:459"] {
+  position: absolute !important;
+  display: block !important;
+  inset: auto !important;
+  top: 0 !important;
+  left: 0 !important;
+  width: 850px !important;
+  height: 6926px !important;
+  pointer-events: none;
+}
+.figma-canvas [data-node-id="13:32"] { translate: 0 84.589px; }
+.figma-canvas [data-node-id="13:510"],
+.figma-canvas [data-node-id="13:536"] { translate: 0 275.365px; }
+.figma-canvas [data-node-id="13:8"],
+.figma-canvas [data-node-id="13:50"],
+.figma-canvas [data-node-id="13:53"],
+.figma-canvas [data-node-id="13:424"] { translate: 0 270px; }
+.figma-canvas [data-node-id="13:459"] { translate: 0 270px; }
+.figma-canvas [data-node-id="13:459"] { transform: none !important; }
+
+.figma-canvas [data-node-id="13:7"],
+.figma-canvas [data-node-id="13:429"] { translate: 0 270px; }
+.figma-canvas [data-node-id="13:38"] { translate: -93.369px 275.365px; }
+.figma-canvas [data-node-id="13:40"] { inset: auto !important; left: 21.914px !important; top: 1632.468px !important; }
+.figma-canvas [data-node-id="13:39"] {
+  inset: auto !important;
+  left: 448.66px !important;
+  top: 2544.259px !important;
+  width: 757.712px !important;
+  height: 665.7px !important;
+}
+.figma-canvas [data-node-id="13:39"] > div > div { width: 757.712px !important; height: 665.7px !important; }
+.figma-canvas [data-node-id="13:42"] { inset: auto !important; left: 111.935px !important; top: 2605.052px !important; }
+.figma-canvas [data-node-id="13:43"] { inset: auto !important; left: 114.67px !important; top: 2652.967px !important; width: 522.44px !important; }
+.figma-canvas [data-node-id="13:44"] { inset: auto !important; left: 114.67px !important; top: 2699.094px !important; }
+.figma-canvas [data-node-id="13:45"] { inset: auto !important; left: 114.67px !important; top: 2773.819px !important; }
+.figma-canvas [data-node-id="13:46"] { inset: auto !important; left: 114.67px !important; top: 2841.847px !important; }
+.figma-canvas [data-node-id="13:47"] { inset: auto !important; left: 114.67px !important; top: 2909.875px !important; }
+.figma-canvas [data-node-id="13:48"] { inset: auto !important; left: 114.67px !important; top: 2988.851px !important; }
+.figma-canvas [data-node-id="13:49"] { inset: auto !important; left: 114.67px !important; top: 3070.851px !important; }
+.figma-canvas [data-node-id="13:482"] {
+  inset: auto !important;
+  left: 51.264px !important;
+  top: 1650.564px !important;
+  width: 612.482px !important;
+  height: 272.579px !important;
+}
+.figma-canvas [data-node-id="13:483"] { inset: auto !important; left: 445.77px !important; top: 2251.159px !important; }
+.figma-canvas [data-node-id="13:485"] { top: 3209.958px !important; }
+.figma-canvas [data-node-id="13:481"] { inset: auto !important; left: 639.964px !important; top: 2556.279px !important; }
+.figma-canvas [data-node-id="13:499"] {
+  inset: auto !important;
+  left: 423.69px !important;
+  top: 1883.405px !important;
+  width: 659.766px !important;
+  height: 250.931px !important;
+}
+.figma-canvas [data-node-id="13:499"] > div > div { width: 659.766px !important; height: 250.931px !important; }
+.figma-canvas [data-node-id="13:501"] { inset: auto !important; left: 93.807px !important; top: 1708.049px !important; width: 6.638px !important; height: 6.638px !important; }
+.figma-canvas [data-node-id="13:502"] { inset: auto !important; left: 93.807px !important; top: 1776.149px !important; width: 6.638px !important; height: 6.638px !important; }
+.figma-canvas [data-node-id="13:503"] { inset: auto !important; left: 93.807px !important; top: 1846.48px !important; width: 6.638px !important; height: 6.638px !important; }
+.figma-canvas [data-node-id="13:504"] {
+  inset: auto !important;
+  left: 109.429px !important;
+  top: 1700.021px !important;
+  width: 508.835px !important;
+  height: 171.778px !important;
+  font-size: 19px !important;
+}
+.figma-canvas [data-node-id="13:505"] {
+  inset: auto !important;
+  left: 233.279px !important;
+  top: 2694.851px !important;
+  width: 560.942px !important;
+  height: 451.089px !important;
+  font-size: 19px !important;
+}
+.figma-canvas [data-node-id="13:507"] { inset: auto !important; left: 696.885px !important; top: 2612.349px !important; width: 83.315px !important; height: 81.237px !important; }
+.figma-canvas [data-node-id="13:509"] {
+  inset: auto !important;
+  left: 121.728px !important;
+  top: 1915.657px !important;
+  width: 607.734px !important;
+  height: 207px !important;
+  font-size: 19px !important;
+}
+.figma-canvas [data-node-id="13:431"] { inset: auto !important; left: 69.104px !important; top: 6914.046px !important; }
+.figma-canvas [data-node-id="13:432"] { inset: auto !important; left: 781.2px !important; top: 6914.046px !important; }
+.figma-canvas [data-node-id="13:458"] {
+  inset: auto !important;
+  left: 425px !important;
+  top: 6547.013px !important;
+  width: 639.484px !important;
+}
+.figma-canvas [data-node-id="13:462"] { pointer-events: auto; }
+
+#social-telegram-link,
+#social-vk-link,
+#social-youtube-link,
+#social-rutube-link,
+#social-dzen-link,
+#social-max-link { position: absolute; z-index: 46; }
+#social-telegram-link { left: 70.407px; top: 6728.861px; width: 92.544px; height: 92.5px; }
+#social-vk-link { left: 193.959px; top: 6729.021px; width: 92.066px; height: 92.086px; }
+#social-youtube-link { left: 317.191px; top: 6728.861px; width: 92.544px; height: 92.5px; }
+#social-rutube-link { left: 440.504px; top: 6729.019px; width: 92.544px; height: 92.467px; }
+#social-dzen-link { left: 563.94px; top: 6728.463px; width: 92.34px; height: 92.87px; }
+#social-max-link { left: 677.005px; top: 6728.861px; width: 114px; height: 92.5px; }
 .figma-canvas .mask-alpha { mask-mode: alpha; }
 .figma-canvas .mask-intersect { mask-composite: intersect; }
 .figma-canvas .mask-no-clip { mask-clip: no-clip; }
@@ -87,7 +208,7 @@ button, input { font: inherit; }
 .last-year-video-link {
   position: absolute;
   z-index: 45;
-  top: 2994.38px;
+  top: 3269.745px;
   left: 69.8px;
   width: 710.4px;
   height: 266.306px;
@@ -99,7 +220,7 @@ button, input { font: inherit; }
 .registration-hotspot {
   position: absolute;
   z-index: 50;
-  top: 6079.776px;
+  top: 6349.776px;
   left: 130.547px;
   width: 588.913px;
   height: 118.188px;
