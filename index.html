@@ -1048,11 +1048,17 @@
             <input name="email" type="email" autocomplete="email" placeholder="Электронная почта*" required />
           </label>
 
+          <label class="registration__honeypot" aria-hidden="true">
+            <span>Фамилия</span>
+            <input name="lastname" type="text" autocomplete="off" tabindex="-1" />
+          </label>
+
           <label class="registration__consent">
             <input name="consent" type="checkbox" checked required />
             <span>Я согласен(а) на обработку<br />персональных данных</span>
           </label>
           <button class="registration__submit" type="submit">Отправить</button>
+          <p class="registration__error" role="alert" hidden></p>
         </form>
 
         <div class="registration__success" role="status" hidden>

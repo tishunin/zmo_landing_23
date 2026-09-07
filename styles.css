@@ -229,6 +229,9 @@ body:has(.registration[open]) { overflow: hidden; }
   cursor: pointer;
   background: var(--dark);
 }
+.registration__submit:disabled { cursor: wait; opacity: .68; }
+.registration__error { position: absolute; top: 600px; left: 49.1775px; width: 383.645px; margin: 0; color: #7a1d1d; font-size: 13px; line-height: 1.3; text-align: center; }
+.registration__honeypot { position: absolute !important; left: -10000px !important; width: 1px !important; height: 1px !important; overflow: hidden !important; }
 .registration__success {
   position: absolute;
   inset: 0;

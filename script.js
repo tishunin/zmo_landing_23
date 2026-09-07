@@ -10,6 +10,8 @@ const form = document.querySelector('#registration-form');
 const success = document.querySelector('.registration__success');
 const successClose = document.querySelector('[data-close-dialog]');
 const dialogClose = document.querySelector('.registration__close');
+const submitButton = form.querySelector('.registration__submit');
+const formError = form.querySelector('.registration__error');
 
 function updateScale() {
   const scale = Math.min(document.documentElement.clientWidth / DESIGN_WIDTH, 1);
@@ -29,6 +31,10 @@ function updateModalScale() {
 function openRegistration() {
   form.hidden = false;
   success.hidden = true;
+  formError.hidden = true;
+  formError.textContent = '';
+  submitButton.disabled = false;
+  submitButton.textContent = 'Отправить';
   updateModalScale();
   dialog.showModal();
   requestAnimationFrame(() => form.elements.name.focus({ preventScroll: true }));
@@ -135,13 +141,46 @@ dialog.addEventListener('click', (event) => {
   if (outside) closeRegistration();
 });
 
-form.addEventListener('submit', (event) => {
+form.addEventListener('submit', async (event) => {
   event.preventDefault();
   if (!form.reportValidity()) return;
-  form.hidden = true;
-  success.hidden = false;
-  successClose.focus();
-  form.reset();
+
+  formError.hidden = true;
+  formError.textContent = '';
+  submitButton.disabled = true;
+  submitButton.textContent = 'Отправляем…';
+
+  const data = new FormData(form);
+  const payload = {
+    name: data.get('name'),
+    phone: data.get('phone'),
+    email: data.get('email'),
+    lastname: data.get('lastname'),
+    consent: data.get('consent') === 'on',
+  };
+
+  try {
+    const response = await fetch('/api/registration', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(payload),
+    });
+    const result = await response.json().catch(() => ({}));
+    if (!response.ok || result.ok !== true) {
+      throw new Error(result.message || 'Не удалось отправить заявку. Попробуйте позже.');
+    }
+
+    form.hidden = true;
+    success.hidden = false;
+    successClose.focus();
+    form.reset();
+  } catch (error) {
+    formError.textContent = error instanceof Error ? error.message : 'Не удалось отправить заявку. Попробуйте позже.';
+    formError.hidden = false;
+  } finally {
+    submitButton.disabled = false;
+    submitButton.textContent = 'Отправить';
+  }
 });
 
 successClose.addEventListener('click', closeRegistration);
