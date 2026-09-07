@@ -6,7 +6,7 @@ const RATE_WINDOW_SECONDS = 3600;
 const RATE_MAX_REQUESTS = 5;
 const RATE_MIN_INTERVAL_SECONDS = 20;
 const MAIL_TO = 'tishunin.yu@zemlyamo.ru';
-const MAIL_FROM = 'noreply@petproject383839.com';
+const MAIL_FROM = 'tishunin.yu@zemlyamo.ru';
 
 function respond(int $status, array $payload): never
 {
