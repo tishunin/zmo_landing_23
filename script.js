@@ -160,7 +160,7 @@ form.addEventListener('submit', async (event) => {
   };
 
   try {
-    const response = await fetch('/api/registration', {
+    const response = await fetch('/api/feedback.php', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(payload),
