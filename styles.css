@@ -226,6 +226,30 @@ button, input { font: inherit; }
 }
 .last-year-video-link:focus-visible { outline: 5px solid var(--dark); outline-offset: -5px; }
 
+.registration-trigger-top {
+  position: absolute;
+  z-index: 50;
+  top: 269px;
+  left: 423px;
+  width: 351px;
+  height: 72px;
+  padding: 0;
+  color: var(--dark);
+  font-family: "Unbounded", sans-serif;
+  font-size: 30px;
+  font-weight: 700;
+  line-height: 1;
+  text-transform: uppercase;
+  border: 0;
+  border-radius: 36px;
+  cursor: pointer;
+  background: var(--green);
+  box-shadow: 0 7px 14px -2px rgb(68 110 4 / 52%);
+}
+.registration-trigger-top:hover { filter: brightness(1.035); }
+.registration-trigger-top:active { translate: 0 2px; box-shadow: 0 4px 9px -2px rgb(68 110 4 / 48%); }
+.registration-trigger-top:focus-visible { outline: 5px solid var(--cream); outline-offset: 3px; }
+
 .registration-hotspot {
   position: absolute;
   z-index: 50;

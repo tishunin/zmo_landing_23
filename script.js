@@ -115,6 +115,16 @@ function initializeLanding() {
   maxLink.append(maxImage);
   root.querySelector('.figma-canvas').append(maxLink);
 
+  const topTrigger = document.createElement('button');
+  topTrigger.id = 'registration-trigger-top';
+  topTrigger.className = 'registration-trigger-top';
+  topTrigger.type = 'button';
+  topTrigger.textContent = 'Регистрация';
+  topTrigger.setAttribute('aria-haspopup', 'dialog');
+  topTrigger.setAttribute('aria-controls', 'registration-dialog');
+  topTrigger.addEventListener('click', openRegistration);
+  root.querySelector('.figma-canvas').append(topTrigger);
+
   const recapLink = document.createElement('a');
   recapLink.id = 'last-year-video-link';
   recapLink.className = 'last-year-video-link';
