@@ -71,6 +71,10 @@ button, input { font: inherit; }
   -webkit-backdrop-filter: blur(9.6px);
   backdrop-filter: blur(9.6px);
 }
+.figma-canvas [data-node-id="13:39"] > div > div,
+.figma-canvas [data-node-id="13:520"] > div > div {
+  background: var(--green) !important;
+}
 .figma-canvas .mask-alpha { mask-mode: alpha; }
 .figma-canvas .mask-intersect { mask-composite: intersect; }
 .figma-canvas .mask-no-clip { mask-clip: no-clip; }
