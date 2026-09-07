@@ -71,7 +71,7 @@ function initializeLanding() {
     '13:443': ['https://vk.com/zemlya_m_o', 'ВКонтакте', 'social-vk-link'],
     '13:450': ['http://www.youtube.com/@zemlya_m_o', 'YouTube', 'social-youtube-link'],
     '13:444': ['https://rutube.ru/channel/42205794/', 'Rutube', 'social-rutube-link'],
-    '13:434': ['https://dzen.ru/kpgreenlife', 'Дзен', 'social-dzen-link'],
+    '13:434': ['https://dzen.ru/zemlya_m_o', 'Дзен', 'social-dzen-link'],
   };
 
   Object.entries(socialLinks).forEach(([nodeId, [url, name, id]]) => {
