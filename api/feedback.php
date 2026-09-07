@@ -7,6 +7,8 @@ const RATE_MAX_REQUESTS = 5;
 const RATE_MIN_INTERVAL_SECONDS = 20;
 const MAIL_TO = 'tishunin.yu@zemlyamo.ru';
 const MAIL_FROM = 'tishunin.yu@zemlyamo.ru';
+const INGENI_ENDPOINT = 'https://ingeni.app/6/sites/events/';
+const INGENI_TIMEOUT_SECONDS = 8;
 
 function respond(int $status, array $payload): never
 {
@@ -80,6 +82,53 @@ function rateLimitExceeded(string $clientIp): bool
 function cleanText(mixed $value): string
 {
     return trim(preg_replace('/\s+/u', ' ', is_string($value) ? $value : '') ?? '');
+}
+
+function sendToIngeni(array $payload): bool
+{
+    try {
+        $body = json_encode(
+            $payload,
+            JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES | JSON_THROW_ON_ERROR
+        );
+    } catch (JsonException) {
+        error_log('Ingeni request was not encoded.');
+        return false;
+    }
+
+    $context = stream_context_create([
+        'http' => [
+            'method' => 'POST',
+            'header' => implode("\r\n", [
+                'Content-Type: application/json; charset=UTF-8',
+                'Accept: application/json',
+                'User-Agent: ZMO-Landing/1.0',
+                'Connection: close',
+            ]),
+            'content' => $body,
+            'timeout' => INGENI_TIMEOUT_SECONDS,
+            'ignore_errors' => true,
+        ],
+        'ssl' => [
+            'verify_peer' => true,
+            'verify_peer_name' => true,
+        ],
+    ]);
+
+    $response = @file_get_contents(INGENI_ENDPOINT, false, $context);
+    $responseHeaders = $http_response_header ?? [];
+    $status = 0;
+    foreach ($responseHeaders as $header) {
+        if (preg_match('/^HTTP\/\S+\s+(\d{3})\b/', $header, $matches) === 1) {
+            $status = (int) $matches[1];
+        }
+    }
+
+    $sent = $response !== false && $status >= 200 && $status < 300;
+    if (!$sent) {
+        error_log('Ingeni request failed with HTTP status ' . $status . '.');
+    }
+    return $sent;
 }
 
 if (($_SERVER['REQUEST_METHOD'] ?? '') !== 'POST') {
@@ -162,6 +211,17 @@ $fields = [
     'E-mail' => $email,
 ];
 
+$ingeniPayload = [
+    'date' => (new DateTimeImmutable('now', new DateTimeZone('Europe/Moscow')))->format('d.m.Y H:i'),
+    'event' => '«Земля и мы»',
+    'source' => '',
+    'name' => $name,
+    'phone' => $phone,
+    'email' => $email,
+    'lastname' => '',
+    'consent' => 'on',
+];
+
 $lines = ['Новая заявка с лендинга «23 года вместе»', ''];
 foreach ($fields as $label => $value) {
     $lines[] = $label . ': ' . $value;
@@ -177,8 +237,14 @@ $headers = implode("\r\n", [
     'Reply-To: ' . MAIL_FROM,
 ]);
 
-$sent = mail(MAIL_TO, $subject, $message, $headers, '-f ' . MAIL_FROM);
-if (!$sent) {
+$ingeniSent = sendToIngeni($ingeniPayload);
+$mailSent = mail(MAIL_TO, $subject, $message, $headers, '-f ' . MAIL_FROM);
+
+if (!$mailSent) {
+    error_log('Registration notification email was not sent.');
+}
+
+if (!$ingeniSent && !$mailSent) {
     respond(502, ['ok' => false, 'message' => 'Не удалось отправить заявку. Попробуйте позже.']);
 }
 
