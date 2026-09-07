@@ -162,20 +162,17 @@ $fields = [
     'E-mail' => $email,
 ];
 
-$rows = '';
+$lines = ['Новая заявка с лендинга «23 года вместе»', ''];
 foreach ($fields as $label => $value) {
-    $safeLabel = htmlspecialchars($label, ENT_QUOTES | ENT_SUBSTITUTE, 'UTF-8');
-    $safeValue = htmlspecialchars($value, ENT_QUOTES | ENT_SUBSTITUTE, 'UTF-8');
-    $rows .= "<tr><td style=\"padding:10px;border:1px solid #e9e9e9;width:30%\"><b>{$safeLabel}</b></td>"
-        . "<td style=\"padding:10px;border:1px solid #e9e9e9\">{$safeValue}</td></tr>";
+    $lines[] = $label . ': ' . $value;
 }
 
-$message = '<table style="width:100%;border-collapse:collapse">' . $rows . '</table>';
-$subject = '=?UTF-8?B?' . base64_encode('Заявка - Мероприятие') . '?=';
+$message = implode("\r\n", $lines) . "\r\n";
+$subject = '=?UTF-8?B?' . base64_encode('Новая заявка с лендинга Земля МО') . '?=';
 $fromName = '=?UTF-8?B?' . base64_encode('Земля МО — регистрация') . '?=';
 $headers = implode("\r\n", [
     'MIME-Version: 1.0',
-    'Content-Type: text/html; charset=UTF-8',
+    'Content-Type: text/plain; charset=UTF-8',
     "From: {$fromName} <" . MAIL_FROM . '>',
     'Reply-To: ' . MAIL_FROM,
 ]);
