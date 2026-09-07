@@ -41,6 +41,15 @@ button, input { font: inherit; }
   transform-origin: 0 0;
 }
 
+@supports (zoom: 1) {
+  @media (max-width: 850px) {
+    .landing-scale {
+      transform: none;
+      zoom: var(--landing-scale);
+    }
+  }
+}
+
 .figma-canvas {
   position: relative;
   width: 850px !important;
